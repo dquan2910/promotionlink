@@ -1,0 +1,29 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="function.js"></script>
+</head>
+    <body style="padding-left: 10px;">
+        <div style="display: grid;justify-content: center;">
+            <span style="font-weight: bold; font-size: 20px; padding-top: 15px;">Link mã:</span>
+        <br>
+        <textarea id="promolink" style="width: 400px; height: 100px"></textarea>
+        <br>
+        <div>
+        <button type="submit" style="width: 200px;" class="btn btn-success" onclick="change()">Chuyển</button>
+        <button type="submit" style="width: 200px;" class="btn btn-primary" onclick="reset()">Reset</button>
+        </div>
+        <br>
+        <span style="font-weight: bold; font-size: 20px;">Body code:</span>
+        <br><textarea id="bodycode" style="width: 400px; height: 100px;" readonly></textarea>
+        <br>
+        <p id="thongbao" style="color: red; font-weight: bold;"> </p>
+        <div>
+        <button style="width: 400px;" class="btn btn-danger" onclick="copy()">Copy</button>    
+        </div>
+        </div>
+    </body>
