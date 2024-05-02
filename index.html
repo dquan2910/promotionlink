@@ -6,25 +6,39 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="function.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
-    <body style="padding-left: 10px;">
-        <div style="display: grid;justify-content: center;">
-            <span style="font-weight: bold; font-size: 20px; padding-top: 15px;">Link mã:</span>
+    <body style="padding-left: 10px; padding-right: 10px;">
+        <div style="justify-content: center; padding-top: 1%">
+            <span style="font-weight: bold; font-size: 19px;">Link mã:</span>
         <br>
-        <textarea id="promolink" style="width: 490px; height: 100px"></textarea>
+        <textarea id="promolink"></textarea>
         <br>
-        <div>
-        <button type="submit" style="width: 160px;" class="btn btn-primary" onclick="change2()">Console</button>
-        <button type="submit" style="width: 160px;" class="btn btn-success" onclick="change1()">API</button>
-        <button type="submit" style="width: 160px;" class="btn btn-info" onclick="change3()">BOT</button>
+        <div style="width: 100%; padding-top: 1%; text-align: center;">
+        <button type="submit" style="width: 32.6%; font-size: 15px" class="btn btn-primary" onclick="change2()">Javascript</button>
+        <button type="submit" style="width: 32.6%; font-size: 15px" class="btn btn-success" onclick="change1()">Postman</button>
+        <button type="submit" style="min-width: 32.5%; font-size: 16px" class="btn btn-info" onclick="change3()">BOT</button>
         </div>
-        <br>
-        <span style="font-weight: bold; font-size: 15px;">Code:</span>
-        <br><textarea id="bodycode" style="width: 490px; height: 100px;" readonly></textarea>
-        <br>
-        <p id="thongbao" style="color: red; font-weight: bold;"> </p>
-        <div>
-        <button style="width: 490px;" class="btn btn-danger" onclick="copy()">Copy</button>    
+        <div style="padding-top: 2%;">
+            <span style="font-weight: bold; font-size: 19px;">Code:</span>
+        </div>
+        <textarea id="bodycode"readonly></textarea>
+        <p id="thongbao" style="color: red; font-weight: bold; max-height: 1.5%; text-align: center;">&nbsp;</p>
+        
+        <div style="text-align: center;">
+        <button style="width: 97.7%; font-size: 15px;" class="btn btn-danger" onclick="copy()">Copy</button>    
         </div>
         </div>
     </body>
+    <style>
+        textarea
+        {
+            width: 100%;
+            height: 150px;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            resize: none;
+        }
+    </style>
