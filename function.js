@@ -55,6 +55,10 @@ function copy() {
             var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
             document.getElementById("thongbao").innerHTML = "";
             var bodyCode = "async function postData(url = \"\", data = {}) {    const response = await fetch(url, {\n method: \"POST\",        headers: {\n\"Content-Type\": \"application/json\",        },\n body: JSON.stringify(data),    });\n return response.json();}\n postData(\"/api/v2/voucher_wallet/save_voucher\", {\n\"voucher_promotionid\": " + promotionId +",   \"signature\": \"" + signature +"\",\n\"signature_source\": \"0\",\n}).then((data) => {    console.log(data);\n});";
+            if(document.getElementById("bodycode").value.indexOf("async") == 0)
+            {
+                bodyCode = "avascript: " + bodyCode
+            }
             document.getElementById("bodycode").value = bodyCode;
         }
     }   
