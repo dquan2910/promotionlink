@@ -184,7 +184,7 @@ document.head.appendChild(s);
                 var s = document.createElement('script'); s.type = 'text/javascript';
                 s.text = finalScript;
                 document.head.appendChild(s);
-                "});`;
+                });`;
                 document.getElementById("bodycode").value = bodyCode;
             }
             else
