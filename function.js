@@ -118,7 +118,7 @@ var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tem
 var s = document.createElement('script'); s.type = 'text/javascript';
 s.text = finalScript;
 document.head.appendChild(s);
-"});`;
+});`;
             if(document.getElementById("bodycode").value.indexOf("fetch") == 0 && document.getElementById("bodycode").value.indexOf(promotionId) != -1)
             {
                 bodyCode = "avascript: " + bodyCode
