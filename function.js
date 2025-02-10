@@ -110,19 +110,86 @@ document.getElementById("thongbao").innerHTML = "";
             var promotionId = promolink.substring(posOfPromotionId + 13, posOfSignature);
             var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
             document.getElementById("thongbao").innerHTML = "";
-            var bodyCode = "fetch('https://dquan2910.github.io/promotionlink/script.js')\n" +
-                            ".then(response => response.text())\n" +
-                            ".then(scriptContent => {\n" +
-                            "  var finalScript = scriptContent.replace('tempId', '" + promotionId + "').replace('tempSign', '" + signature + "');\n" +
-                            "  var s = document.createElement('script'); s.type = 'text/javascript';\n" +
-                            "  s.text = finalScript;\n" +
-                            "  document.head.appendChild(s);\n" +
-                            "});";
+            var bodyCode = 
+    `fetch('https://dquan2910.github.io/promotionlink/script.js')
+.then(response => response.text())
+.then(scriptContent => {
+var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
+var s = document.createElement('script'); s.type = 'text/javascript';
+s.text = finalScript;
+document.head.appendChild(s);
+"});`;
             if(document.getElementById("bodycode").value.indexOf("fetch") == 0 && document.getElementById("bodycode").value.indexOf(promotionId) != -1)
             {
                 bodyCode = "avascript: " + bodyCode
             }
             document.getElementById("bodycode").value = bodyCode;
         }
+    }   
+  }
+
+  function change5(){
+    if(document.getElementById("promolink").value == "")
+    {
+        document.getElementById("thongbao").innerHTML = "Vui lòng điền link.";
+    }
+    else    
+    {
+        var promolink = document.getElementById("promolink").value;
+        var stringList = "";
+        var listVoucher = promolink.split(',');
+        var errList = "";
+        var count = 0;
+        var test = "";
+        var listLength = listVoucher.length;
+        for (i = 0; i < listLength; i++)
+        {
+            
+            var linkVoucher = listVoucher[i].trim();
+            var posOfPromotionId = linkVoucher.indexOf("&promotionId=");
+            var posOfSignature = linkVoucher.indexOf("&signature=");
+            if(posOfPromotionId == -1 || posOfSignature == -1)
+            {                
+                if(errList.length != 0) errList = errList + ", ";
+                var posOfLink = i + 1;
+                errList = errList + "Link " + posOfLink;
+                count++;
+                continue;
+            }
+            else
+            {
+                if(stringList.length != 0) stringList = stringList + ", ";
+                var promotionId = linkVoucher.substring(posOfPromotionId + 13, posOfSignature);
+                var signature =  (linkVoucher.substring(posOfSignature + 11)).substring(0,64);
+                var code = '"' + promotionId + ":" + signature + '"';
+                stringList = stringList + code;
+            }
+        }
+        if(count != listLength)
+            {
+                if(count > 0)
+                {
+                    errList = errList + " sai nên không thêm vào list";
+                    document.getElementById("thongbao").innerHTML = errList;
+                }
+                else 
+                {
+                    document.getElementById("thongbao").innerHTML = "";
+                }
+                var bodyCode =
+                `fetch('https://dquan2910.github.io/promotionlink/script2.js')
+                .then(response => response.text())
+                .then(scriptContent => {
+                var finalScript = scriptContent.replace('tempList', '${stringList}');
+                var s = document.createElement('script'); s.type = 'text/javascript';
+                s.text = finalScript;
+                document.head.appendChild(s);
+                "});`;
+                document.getElementById("bodycode").value = bodyCode;
+            }
+            else
+            {
+                document.getElementById("thongbao").innerHTML = "Tất cả link voucher đều sai!!!";
+            }
     }   
   }

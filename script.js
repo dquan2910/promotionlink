@@ -1,4 +1,3 @@
-
 async function postData(url = "", data = {}) {    const response = await fetch(url, {
     method: "POST",        headers: {
    "Content-Type": "application/json",        },
@@ -47,10 +46,10 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
     
    var info = data.data.voucher.icon_text;
    var new_window = window.open('');
-   var errorMsg = data.error_msg;
-   if(errorMsg == "")
+   var resultMsg = data.error_msg;
+   if(resultMsg == "")
     errorMsg = "Lưu thành công";
-   new_window.document.write("<h1>" + voucherCode + " - " + percentUsed +"% đã sử dụng - " + errorMsg + "</h1>");
+   new_window.document.write('<h1> ${voucherCode} - + ${percentUsed}% đã sử dụng - ${resultMsg}</h1>');
    new_window.document.write("<h3>" + discount_info + "</h3>");
    new_window.document.write("<h3>Info: " + info + "</h3>");
    new_window.document.write("<h3>Thời gian lưu: " + claimStart + " - " + claimEnd + "</h3>");
