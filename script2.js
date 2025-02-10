@@ -3,7 +3,8 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    "Content-Type": "application/json",        },
     body: JSON.stringify(data),    });
     return response.json();}
-const listvoucher = [tempList];
+async function SaveVoucher() {
+    const listvoucher = [tempList];
 var total = listvoucher.length;
 var count = 0;
 var new_window = window.open('');
@@ -34,3 +35,5 @@ new_window.document.write('<h1>Danh sách thực hiện lưu voucher:<h1>');
                 }
     }
     new_window.document.write(`<h1 style = "color: red;">Kết quả: ${count}/${total} voucher đã lưu thành công</h1>`);
+}
+SaveVoucher();
