@@ -193,3 +193,19 @@ document.head.appendChild(s);
             }
     }   
   }
+  function change6()
+  {
+    if(document.getElementById("promolink").value == "")
+    {
+            document.getElementById("thongbao").innerHTML = "Vui lòng điền link.";
+    }
+    else
+    {
+        var promolink = document.getElementById("promolink").value;
+        var posOfPromotionId = promolink.indexOf("&promotionId=");
+        var posOfSignature = promolink.indexOf("&signature=");
+        if(posOfPromotionId == -1 || posOfSignature == -1){
+            document.getElementById("thongbao").innerHTML = "Đường dẫn có vẻ sai, vui lòng điền lại";
+        }
+    }
+  }

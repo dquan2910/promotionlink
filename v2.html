@@ -11,28 +11,34 @@
 </head>
     <body style="padding-left: 10px; padding-right: 10px;">
         <div style="text-align: center;">
-            <a href="index.html"><button style="width: 98%; font-size: 15px;" class="btn btn-warning">Trở về bản cũ</button></a>
+            <a href="index.html"><button style="width: 98%;" class="btn btn-warning">Trở về bản cũ</button></a>
             </div>
         <div style="justify-content: center; padding-top: 1%">
-            <span style="font-weight: bold; font-size: 16px;">Link mã (nếu điền nhiều link cách nhau bằng dấu ","):</span>
-        <br>
+            <span class="title">Link mã:</span>
         <textarea id="promolink"></textarea>
         <br>
         <div style="width: 100%; padding-top: 1%; text-align: center;">
-            <button type="submit" style="width: 33%; font-size: 15px" class="btn btn-info" onclick="change4()">Chuyển đổi 1 link</button>
-            <button type="submit" style="width: 37%; font-size: 15px" class="btn btn-primary" onclick="change5()">Chuyển đổi nhiều link</button>
-            <button type="submit" style="min-width: 28%; font-size: 16px" class="btn btn-success" onclick="reset()">Reset</button>
+            <button type="submit" style="background-color: #00cc00" class="btn" onclick="change4()">Chuyển đổi 1 link</button>
+            <button type="submit" style="background-color: #8c66ff;" class="btn" onclick="change5()">Chuyển đổi nhiều link</button>
+        </div>
+        <div style="width: 100%; padding-top: 1%; text-align: center;">
+            <button type="submit" style="background-color: #ff6600;" class="btn" onclick="change6()">Spam tới khi lưu được</button>
+            <button type="submit" style="background-color: #ff3333;" class="btn" onclick="reset()">Reset</button>
         </div>
         <div style="padding-top: 2%;">
-            <span style="font-weight: bold; font-size: 19px;">Code:</span>
+            <span class="title">Code:</span>
         </div>
         <textarea id="bodycode"readonly></textarea>
-        <p id="thongbao" style="color: red; font-weight: bold; max-height: 1.5%; text-align: center;">&nbsp;</p>
+        <p id="thongbao" style="color: red; font-weight: bold; max-height: 1.5%; text-align: center;"></p>
         <div style="text-align: center;">
         <button style="width: 98%; font-size: 15px;" class="btn btn-danger" onclick="copy()">Copy</button>
     
         </div>
-        
+        <div>
+            <div class="note">*Chuyển đổi nhiều link: các link cách nhau bằng dấu phẩy (","), link sai tự động lược bỏ</div>
+            <div class="note">*Spam tới khi lưu được: dừng khi lưu được mã, lưu ý khi spam lâu sẽ dính captcha</div>  
+        </div>
+       
         </div>
     </body>
     <style>
@@ -44,5 +50,20 @@
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             resize: none;
+        }
+        .note
+        {
+            font-size: 14px; padding-top: 2%; font-style: italic
+        }
+        .btn
+        {
+            color: white;
+            width: 49%;
+            font-size: 15px;
+            font-weight:bold;
+        }
+        .title
+        {
+            font-weight: bold; font-size: 16px;
         }
     </style>
