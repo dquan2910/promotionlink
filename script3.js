@@ -4,6 +4,9 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
     body: JSON.stringify(data),    });
     return response.json();}
 
+function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+}
 async function SpamVoucher() {
     var new_window = window.open('');
     new_window.document.write(`<h1> Bắt đầu lưu voucher </h1>`)
@@ -11,8 +14,9 @@ async function SpamVoucher() {
     {
         try
         {
+            await wait(300);
             const data = await postData("/api/v2/voucher_wallet/save_voucher", {
-                "voucher_promotionid": tempId, "signature": "tempSign",
+                "voucher_promotionid": 1090326372847616, "signature": "afec23f3010d9655a1521fc613d34c94aec8933a3a96a0e433f250c9d71b870d",
                 "signature_source": "0",
                 });
             var err = data.error;
@@ -46,6 +50,11 @@ async function SpamVoucher() {
             else if(err == 10002)
             {
                 new_window.document.write(`<h2>Voucher không hợp lệ</h2>`);
+                break;
+            }
+            else
+            {
+                new_window.document.write(`<h2>${err} - Đã dính captcha =)))</h2>`);
                 break;
             }    
         }
