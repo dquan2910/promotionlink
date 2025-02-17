@@ -31,7 +31,6 @@ function copy() {
             var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
             document.getElementById("thongbao").innerHTML = "";
             var bodyCode = "{\n\t\"voucher_promotionid\":" + promotionId + ",\n\t\"signature\":\"" + signature + "\",\n\t\"signature_source\":\"0\"\n}";
-            
             document.getElementById("bodycode").value = bodyCode;
         }
     }   
@@ -193,13 +192,12 @@ document.head.appendChild(s);
             }
     }   
   }
-  function change6()
-  {
+  function change6(){
     if(document.getElementById("promolink").value == "")
     {
-            document.getElementById("thongbao").innerHTML = "Vui lòng điền link.";
+        document.getElementById("thongbao").innerHTML = "Vui lòng điền link.";
     }
-    else
+    else    
     {
         var promolink = document.getElementById("promolink").value;
         var posOfPromotionId = promolink.indexOf("&promotionId=");
@@ -207,5 +205,25 @@ document.head.appendChild(s);
         if(posOfPromotionId == -1 || posOfSignature == -1){
             document.getElementById("thongbao").innerHTML = "Đường dẫn có vẻ sai, vui lòng điền lại";
         }
-    }
+        else
+        {
+            var promotionId = promolink.substring(posOfPromotionId + 13, posOfSignature);
+            var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
+            document.getElementById("thongbao").innerHTML = "";
+            var bodyCode = 
+    `fetch('https://dquan2910.github.io/promotionlink/script3.js')
+.then(response => response.text())
+.then(scriptContent => {
+var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
+var s = document.createElement('script'); s.type = 'text/javascript';
+s.text = finalScript;
+document.head.appendChild(s);
+});`;
+            if(document.getElementById("bodycode").value.indexOf("fetch") == 0 && document.getElementById("bodycode").value.indexOf(promotionId) != -1)
+            {
+                bodyCode = "avascript: " + bodyCode
+            }
+            document.getElementById("bodycode").value = bodyCode;
+        }
+    }   
   }
