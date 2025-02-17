@@ -9,6 +9,7 @@ function wait(ms) {
 }
 async function SpamVoucher() {
     var new_window = window.open('');
+    var count = 0;
     new_window.document.write(`<h1> Bắt đầu lưu voucher </h1>`)
     while(true)
     {
@@ -19,6 +20,7 @@ async function SpamVoucher() {
                 "voucher_promotionid": tempId, "signature": "tempSign",
                 "signature_source": "0",
                 });
+            count++;
             var err = data.error;
             if(err == 0)
             {
@@ -29,7 +31,7 @@ async function SpamVoucher() {
             }
             else if(err == 5)
             {
-                new_window.document.write(`<h2>${data.error_msg}</h2>`);
+                new_window.document.write(`<h2>[${count}]${data.error_msg}</h2>`);
                 break;
             }
             else if(err == 14)
@@ -38,12 +40,12 @@ async function SpamVoucher() {
                 var errMsg = data.error_msg;
                 if(invalidCode == 4)
                 {
-                    new_window.document.write(`<h2>${errMsg}</h2>`);
+                    new_window.document.write(`<h2>[${count}]${errMsg}</h2>`);
                     continue;
                 }
                 else
                 {
-                    new_window.document.write(`<h2>${errMsg}</h2>`);
+                    new_window.document.write(`<h2>[${count}]${errMsg}</h2>`);
                     break;
                 }
             }
@@ -54,7 +56,7 @@ async function SpamVoucher() {
             }
             else
             {
-                new_window.document.write(`<h2>${err} - Đã dính captcha =)))</h2>`);
+                new_window.document.write(`<h2>[${count}]${err} - Đã dính captcha =)))</h2>`);
                 break;
             }    
         }
