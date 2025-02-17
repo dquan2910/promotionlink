@@ -16,7 +16,7 @@ async function SpamVoucher() {
         {
             await wait(300);
             const data = await postData("/api/v2/voucher_wallet/save_voucher", {
-                "voucher_promotionid": 1090326372847616, "signature": "afec23f3010d9655a1521fc613d34c94aec8933a3a96a0e433f250c9d71b870d",
+                "voucher_promotionid": tempId, "signature": "tempSign",
                 "signature_source": "0",
                 });
             var err = data.error;
