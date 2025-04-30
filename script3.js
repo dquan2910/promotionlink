@@ -34,10 +34,6 @@ async function SpamVoucher() {
                 new_window.document.body.insertAdjacentHTML('afterbegin', `<h2 style="background-color: #00FF00;">[${claimDate}] Lưu thành công: ${data.data.voucher.voucher_code} - ${data.data.voucher.percentage_used}% đã sử dụng</h2>`);
                 break;
             }
-            else if(errMsg.includes("Khung"))
-            {
-                new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
-            }
             else if (err == 5) {
                 new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${data.error_msg}</h2>`);
                 break;
@@ -47,7 +43,12 @@ async function SpamVoucher() {
                 if (invalidCode == 4) {
                     new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
                     continue;
-                } else {
+                }
+                else if (invalidCode == 8) {
+                    new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
+                    continue;
+                }
+                else {
                     new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
                     break;
                 }
