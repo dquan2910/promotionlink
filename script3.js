@@ -29,7 +29,11 @@ async function SpamVoucher() {
                 new_window.document.insertAdjacentHTML("afterbegin",`<h2 style = "background-color: #00FF00;">[${claimDate}] Lưu thành công: ${data.data.voucher.voucher_code} - ${data.data.voucher.percentage_used}% đã sử dụng</h2>`);
                 break;                   
             }
-            else if(err == 5 && !data.error_msg.includes("Khung giờ"))
+            else if(data.error_msg.includes("Khung giờ"))
+            {
+                    new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${errMsg}</h2>`);
+            }
+            else if(err == 5)
             {
                 new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${data.error_msg}</h2>`);
                 break;
