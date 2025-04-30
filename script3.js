@@ -31,7 +31,7 @@ async function SpamVoucher() {
             }
             else if(data.error_msg.includes("Khung giờ"))
             {
-                    new_window.document.body.insertAdjacentHTML("afterbegin",`<h2>[${count}]${errMsg}</h2>`);
+                new_window.document.body.insertAdjacentHTML("afterbegin",`<h2>[${count}]${data.error_msg}</h2>`);
             }
             else if(err == 5)
             {
