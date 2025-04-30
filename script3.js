@@ -40,11 +40,13 @@ async function SpamVoucher() {
             }
             else if (err == 14) {
                 var invalidCode = data.data.invalid_message_code;
-                if (invalidCode == 4) {
+                if (invalidCode == 4)
+                {
                     new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
                     continue;
                 }
-                else if (invalidCode == 8) {
+                else if (invalidCode == 8) //Khung thời gian chưa bắt đầu
+                {
                     new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
                     continue;
                 }
