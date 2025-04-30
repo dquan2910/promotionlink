@@ -26,12 +26,12 @@ async function SpamVoucher() {
             {
                 let date = new Date(data.data.voucher.collect_time * 1000); 
                 var claimDate = date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
-                new_window.document.write(`<h2 style = "background-color: #00FF00;">[${claimDate}] Lưu thành công: ${data.data.voucher.voucher_code} - ${data.data.voucher.percentage_used}% đã sử dụng</h2>`);
+                new_window.document.insertAdjacentHTML("afterbegin",`<h2 style = "background-color: #00FF00;">[${claimDate}] Lưu thành công: ${data.data.voucher.voucher_code} - ${data.data.voucher.percentage_used}% đã sử dụng</h2>`);
                 break;                   
             }
-            else if(err == 5)
+            else if(err == 5 && !data.error_msg.includes("Khung giờ"))
             {
-                new_window.document.write(`<h2>[${count}]${data.error_msg}</h2>`);
+                new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${data.error_msg}</h2>`);
                 break;
             }
             else if(err == 14)
@@ -40,29 +40,29 @@ async function SpamVoucher() {
                 var errMsg = data.error_msg;
                 if(invalidCode == 4)
                 {
-                    new_window.document.write(`<h2>[${count}]${errMsg}</h2>`);
+                    new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${errMsg}</h2>`);
                     continue;
                 }
                 else
                 {
-                    new_window.document.write(`<h2>[${count}]${errMsg}</h2>`);
+                    new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${errMsg}</h2>`);
                     break;
                 }
             }
             else if(err == 10002)
             {
-                new_window.document.write(`<h2>Voucher không hợp lệ</h2>`);
+                new_window.document.insertAdjacentHTML("afterbegin",`<h2>Voucher không hợp lệ</h2>`);
                 break;
             }
             else
             {
-                new_window.document.write(`<h2>[${count}]${err} - Đã dính captcha =)))</h2>`);
+                new_window.document.insertAdjacentHTML("afterbegin",`<h2>[${count}]${err} - Đã dính captcha =)))</h2>`);
                 break;
             }    
         }
         catch(error)
         {
-            new_window.document.write('Đã dính captcha =))');
+            new_window.document.insertAdjacentHTML("afterbegin",'<h2>Đã dính captcha =))</h2>');
             break;
         }
     }
