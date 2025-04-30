@@ -66,7 +66,7 @@ async function SpamVoucher() {
         }
         catch(error)
         {
-            new_window.document.insertAdjacentHTML("afterbegin",'<h2>Đã dính captcha =))</h2>');
+            new_window.document.body.insertAdjacentHTML("afterbegin",'<h2>Đã dính captcha =))</h2>');
             break;
         }
     }
