@@ -57,11 +57,11 @@ async function SpamVoucher() {
                 break;
             }
             else {
-                new_window.document.body.insertAdjacentHTML('afterbegin', <h2>[${count}]${err} - Đã dính captcha =)))</h2>);
+                new_window.document.body.insertAdjacentHTML('afterbegin', <h2>[${count}]${err} - Đã dính captcha</h2>);
                 break;
             }
         } catch (error) {
-            new_window.document.body.insertAdjacentHTML('afterbegin', 'Đã dính captcha =))');
+            new_window.document.body.insertAdjacentHTML('afterbegin', <h2>Đã dính captcha</h2>);
             break;
         }
     }
