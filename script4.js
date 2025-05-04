@@ -8,8 +8,8 @@ async function SaveVoucher() {
     const listSign = [tempListSign];
 var total = listId.length;
 var count = 0;
-var new_window = window.open('');
 var savedCount = 0;
+var new_window = window.open('');
 new_window.document.write('<h2>Bắt đầu thực hiện lưu voucher:<h2>');
 while(true)
 {
@@ -112,10 +112,7 @@ while(true)
             if (invalidCode == 4)
             {
                 new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
-                savedCount = savedCount - 1;
-                listId.slice(i,1);
-                listSign.slice(i,1);
-                i = i - 1;
+                continue;
             }
             else if (invalidCode == 8) //Khung thời gian chưa bắt đầu
             {
