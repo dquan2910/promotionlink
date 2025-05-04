@@ -25,7 +25,7 @@ while(true)
         {
             await wait(200);
             const data = await postData("/api/v2/voucher_wallet/save_voucher", {
-                "voucher_promotionid": listId[i], "signature": listSign[i],
+                "voucher_promotionid": parseInt(listId[i]), "signature": listSign[i],
                 "signature_source": "0",
                 });
             count++;
