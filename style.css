@@ -19,7 +19,7 @@ body
 {
     padding-left: 10px;
     padding-right: 10px;
-    font-family: "Segoe UI";
+    font-family: 'Noto Sans';
 }
 .note
 {
@@ -28,7 +28,7 @@ body
 .btn
 {
     color: white !important;
-    font-size: 15px;
+    font-size: 14px;
     font-weight:bold;
     flex: 1;
 }
