@@ -3,6 +3,10 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    "Content-Type": "application/json",        },
     body: JSON.stringify(data),    });
     return response.json();}
+
+function wait(ms){
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 async function SaveVoucher() {
     const listId = [tempListId];
     const listSign = [tempListSign];
