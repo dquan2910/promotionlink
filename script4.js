@@ -113,9 +113,9 @@ while(true)
             else if (err == 14)
             {
             var invalidCode = data.data.invalid_message_code;
-            if (invalidCode == 4)
+            if (invalidCode == 4) //Voucher đã hết lượt sử dụng
             {
-                new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${errMsg}</h2>`);
+                new_window.document.body.insertAdjacentHTML('afterbegin', `<h2>[${count}]${listId[i]} - ${errMsg}</h2>`);
                 continue;
             }
             else if (invalidCode == 8) //Khung thời gian chưa bắt đầu
