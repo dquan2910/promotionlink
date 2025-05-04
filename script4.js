@@ -33,6 +33,7 @@ while(true)
             var errMsg = data.error_msg;
             if (err == 0)
             {
+                var minSpend = data.data.voucher.min_spend.toString();
                 if(minSpend.length == 1)
                     minSpend = minSpend + "₫";
                    else if(minSpend.length < 9)
@@ -72,6 +73,7 @@ while(true)
             }
             else if (err == 5) //Đã lưu trước đó
             {
+                var minSpend = data.data.voucher.min_spend.toString();
                 if(minSpend.length == 1)
                     minSpend = minSpend + "₫";
                    else if(minSpend.length < 9)
