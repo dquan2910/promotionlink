@@ -1,0 +1,39 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="function.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+    <body>
+        <div id="div-top-btn">
+            <a href="index.html"><button id="btn-temp" class="btn btn-warning">New version</button></a>
+        </div>
+        <div style="justify-content: center; padding-top: 1%">
+            <span style="font-weight: bold; font-size: 19px;">Link mã:</span>
+        <br>
+        <textarea id="promolink"></textarea>
+        <br>
+        <div class="btn-line">
+        <button type="submit" class="btn btn-primary btn-child" onclick="change2()">Javascript</button>
+        <button type="submit" class="btn btn-success" onclick="change1()">Postman</button>
+        <button type="submit" class="btn btn-info" onclick="change3()">BOT</button>
+        </div>
+        <div style="padding-top: 2%;">
+            <span style="font-weight: bold; font-size: 19px;">Code:</span>
+        </div>
+        <textarea id="bodycode"readonly></textarea>
+        <p id="thongbao"></p>
+        
+        <div style="text-align: center;">
+        <button id="btn-temp" class="btn btn-danger" onclick="copy()">Copy</button>
+    
+        </div>
+        
+        </div>
+    </body>

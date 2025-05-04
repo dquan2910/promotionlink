@@ -1,0 +1,52 @@
+textarea
+{
+    width: 100%;
+    height: 150px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    resize: none;
+}
+#div-top-btn
+{
+    padding-top:1%;
+}
+#btn-temp
+{
+    width: 100%;
+}
+body
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: "Segoe UI";
+}
+.note
+{
+    font-size: 14px; padding-top: 2%; font-style: italic
+}
+.btn
+{
+    color: white !important;
+    font-size: 15px;
+    font-weight:bold;
+    flex: 1;
+}
+.title
+{
+    font-weight: bold; font-size: 16px;
+}
+.btn-line
+{
+    width: 100%; padding-top: 1%;
+    text-align: center;
+    display: flex;
+    gap: 0.5%;
+}
+#thongbao
+{
+    color: red;
+    font-weight: bold;
+    max-height: 1.5%;
+    text-align: center;
+}

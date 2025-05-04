@@ -7,43 +7,41 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="function.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
 
 </head>
-    <body style="padding-left: 10px; padding-right: 10px;">
-        <div style="text-align: center;">
-            <a href="v2"><button style="width: 97.7%; font-size: 15px;" class="btn btn-warning">New version (test)</button></a>
-            </div>
+    <body>
+        <div id="div-top-btn">
+            <a href="v1.html"><button id="btn-temp" class="btn btn-warning">Trở về bản cũ</button></a>
+        </div>
         <div style="justify-content: center; padding-top: 1%">
-            <span style="font-weight: bold; font-size: 19px;">Link mã:</span>
-        <br>
+            <span class="title">Link mã:</span>
         <textarea id="promolink"></textarea>
         <br>
-        <div style="width: 100%; padding-top: 1%; text-align: center;">
-        <button type="submit" style="width: 32.6%; font-size: 15px" class="btn btn-primary" onclick="change2()">Javascript</button>
-        <button type="submit" style="width: 32.6%; font-size: 15px" class="btn btn-success" onclick="change1()">Postman</button>
-        <button type="submit" style="min-width: 32.5%; font-size: 16px" class="btn btn-info" onclick="change3()">BOT</button>
+        <div class="btn-line">
+            <button type="submit" style="background-color: #00cc00" class="btn" onclick="change4()">Lưu thường (1 link)</button>
+            <button type="submit" style="background-color: #8c66ff;" class="btn" onclick="change5()">Lưu thường (Nhiều link)</button>
         </div>
-        <div style="padding-top: 2%;">
-            <span style="font-weight: bold; font-size: 19px;">Code:</span>
+        <div class="btn-line">
+            <button type="submit" style="background-color: #ff6600;" class="btn" onclick="change6()">Spam lưu (1 link)</button>
+            <button type="submit" style="background-color: #0776f5; text-decoration:line-through" class="btn" onclick="">Spam lưu (Nhiều link)</button>
+        </div>
+        <div class="btn-line">
+            <button type="submit" style="background-color: #ff3333;" class="btn" onclick="reset()">Reset</button>
+        </div>
+        <div style="padding-top: 2%;display: flex; align-items: center; gap: 8px; padding-bottom: 2%">
+            <span class="title">Code:</span>
+            <input id="checkForAdding" type="checkbox" style="width: 20px; height: 20px;" onchange="checkedValidate(this)">
+            <span class="title">"Thêm avascript:"?</span>
         </div>
         <textarea id="bodycode"readonly></textarea>
-        <p id="thongbao" style="color: red; font-weight: bold; max-height: 1.5%; text-align: center;">&nbsp;</p>
-        
+        <p id="thongbao"></p>
         <div style="text-align: center;">
-        <button style="width: 97.7%; font-size: 15px;" class="btn btn-danger" onclick="copy()">Copy</button>
+        <button id="btn-temp" class="btn btn-danger" onclick="copy()">Copy</button>
     
         </div>
-        
-        </div>
+        <div>
+            <div class="note">*Tick checkbox nếu muốn thêm "avascript: " vào code.</div>
+            <div class="note">*Nhiều link: các link cách nhau bằng dấu phẩy (","), link chưa hợp lệ sẽ tự động được lược bỏ.</div>
+            <div class="note">*Spam lưu: dừng khi dính captcha hoặc lưu được tất cả link.</div>
     </body>
-    <style>
-        textarea
-        {
-            width: 100%;
-            height: 150px;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            resize: none;
-        }
-    </style>
