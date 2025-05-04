@@ -18,6 +18,10 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    date = new Date(data.data.voucher.start_time * 1000); 
    var startTime = date.toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
    var percent = data.data.voucher.discount_percentage;
+   if(percent == "0")
+    percent = "trực tiếp";
+   else
+    percent = percent +"%";
    var voucherCode = data.data.voucher.voucher_code;
    var percentUsed = data.data.voucher.percentage_used;
    var minSpend = data.data.voucher.min_spend.toString();
@@ -28,7 +32,15 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    else
     minSpend = minSpend.substring(0, minSpend.length - 8) + "K";
    minSpend = " cho đơn từ " + minSpend;
-   var maxValue = data.data.voucher.discount_cap.toString();
+   var maxValue = data.data.voucher.reward_value.toString();
+   if(maxValue.length == 1)
+   {
+        maxValue = data.data.voucher.discount_value;
+        if(maxValue.length == 1)
+            maxValue = data.data.voucher.reward_cap;
+        if(maxValue.length == 1)
+            maxValue = data.data.voucher.discount_cap;
+   }
    if(maxValue.length == 1)
     maxValue = "không giới hạn";
    else if(maxValue.length < 9)
@@ -39,10 +51,10 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
     if(percent == "0")
         discount_info = "Giảm" + maxValue + minSpend;
     else
-        {
-            if(maxValue != "không giới hạn") maxValue = "tối đa" + maxValue;
-            discount_info = `Giảm ${percent}% ${maxValue} ${minSpend}`;
-        }    
+    {
+        if(maxValue != "không giới hạn") maxValue = "tối đa" + maxValue;
+        discount_info = `Giảm ${percent} ${maxValue} ${minSpend}`;
+    }    
    var info = data.data.voucher.icon_text;
    var new_window = window.open('');
    var resultMsg = data.error_msg;

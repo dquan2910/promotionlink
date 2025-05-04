@@ -229,15 +229,14 @@ document.head.appendChild(s);
     else    
     {
         var promolink = document.getElementById("promolink").value;
-        var stringList = "";
+        var stringListId = "";
+        var stringListSign = "";
         var listVoucher = promolink.split(',');
         var errList = "";
         var count = 0;
-        var test = "";
         var listLength = listVoucher.length;
         for (i = 0; i < listLength; i++)
         {
-            
             var linkVoucher = listVoucher[i].trim();
             var posOfPromotionId = linkVoucher.indexOf("&promotionId=");
             var posOfSignature = linkVoucher.indexOf("&signature=");
@@ -251,11 +250,12 @@ document.head.appendChild(s);
             }
             else
             {
-                if(stringList.length != 0) stringList = stringList + ", ";
-                var promotionId = linkVoucher.substring(posOfPromotionId + 13, posOfSignature);
-                var signature =  (linkVoucher.substring(posOfSignature + 11)).substring(0,64);
-                var code = '"' + promotionId + ":" + signature + '"';
-                stringList = stringList + code;
+                if(stringListId.length != 0) stringListId = stringListId + ", ";
+                if(stringListSign.length != 0) stringListSign = stringListSign + ", ";
+                var promotionId = '"' + linkVoucher.substring(posOfPromotionId + 13, posOfSignature) + '"';
+                var signature = '"' + (linkVoucher.substring(posOfSignature + 11)).substring(0,64) + '"';
+                stringListId = stringListId + promotionId;
+                stringListSign = stringListSign + signature;
             }
         }
         if(count != listLength)
@@ -273,11 +273,12 @@ document.head.appendChild(s);
                 `fetch('https://dquan2910.github.io/promotionlink/script4.js')
                 .then(response => response.text())
                 .then(scriptContent => {
-                var finalScript = scriptContent.replace('tempList', '${stringList}');
+                var finalScript = scriptContent.replace('tempListId', '${stringListId}').replace('tempListSign', '${stringListSign}');
                 var s = document.createElement('script'); s.type = 'text/javascript';
                 s.text = finalScript;
                 document.head.appendChild(s);
                 });`;
+                bodyCode = checkCheckedBox(bodyCode);
                 document.getElementById("bodycode").value = bodyCode;
             }
             else
