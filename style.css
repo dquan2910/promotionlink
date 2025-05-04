@@ -19,7 +19,7 @@ body
 {
     padding-left: 10px;
     padding-right: 10px;
-    font-family: 'Noto Sans' !important;
+    font-family: 'Noto Sans', sans-serif !important;
 }
 .note
 {
