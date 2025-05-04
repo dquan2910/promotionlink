@@ -10,7 +10,7 @@ var total = listId.length;
 var count = 0;
 var new_window = window.open('');
 var savedCount = 0;
-new_window.document.body.write('<h2>Bắt đầu thực hiện lưu voucher:<h2>');
+new_window.document.write('<h2>Bắt đầu thực hiện lưu voucher:<h2>');
 while(true)
 {
     var loopLength = listId.length;
