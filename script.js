@@ -35,11 +35,11 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    var maxValue = data.data.voucher.reward_value.toString();
    if(maxValue.length == 1)
    {
-        maxValue = data.data.voucher.discount_value;
+        maxValue = data.data.voucher.discount_value.toString();
         if(maxValue.length == 1)
-            maxValue = data.data.voucher.reward_cap;
+            maxValue = data.data.voucher.reward_cap.toString();
         if(maxValue.length == 1)
-            maxValue = data.data.voucher.discount_cap;
+            maxValue = data.data.voucher.discount_cap.toString();
    }
    if(maxValue.length == 1)
     maxValue = "không giới hạn";
