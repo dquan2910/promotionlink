@@ -7,6 +7,7 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
    "voucher_promotionid": tempId,   "signature": "tempSign",
    "signature_source": "0",
    }).then((data) => {
+    var new_window = window.open('');
     if(data.error != 14)
     {
     let date = new Date(data.data.voucher.claim_end_time * 1000); 
@@ -56,12 +57,11 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
         discount_info = `Giảm ${percent} ${maxValue} ${minSpend}`;
     }    
    var info = data.data.voucher.icon_text;
-   var new_window = window.open('');
    var resultMsg = data.error_msg;
    if(resultMsg == "")
     errorMsg = "Lưu thành công";
    new_window.document.write(`<h1> ${voucherCode} - ${percentUsed}% đã sử dụng - ${resultMsg}</h1>`);
-   new_window.document.write(`<h3>"${discount_info}</h3>`);
+   new_window.document.write(`<h3>${discount_info}</h3>`);
    new_window.document.write(`<h3>Info: ${info}</h3>`);
    new_window.document.write(`<h3>Thời gian lưu: ${claimStart} - ${claimEnd}</h3>`);
    new_window.document.write(`<h3>Hiệu lực mã: ${startTime} - ${endTime}</h3>`);
@@ -69,6 +69,6 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
     }
     else
     {
-        console.log(data.error_msg);
+        new_window.document.write(`<h3>tempId - ${data.error_msg}</h3>`);
     }
    });
