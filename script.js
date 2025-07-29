@@ -53,13 +53,13 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
         discount_info = "Giảm" + maxValue + minSpend;
     else
     {
-        if(maxValue != "không giới hạn") maxValue = "tối đa" + maxValue;
+        if(maxValue != "không giới hạn") maxValue = "tối đa " + maxValue;
         discount_info = `Giảm ${percent} ${maxValue} ${minSpend}`;
     }    
    var info = data.data.voucher.icon_text;
    var resultMsg = data.error_msg;
    if(resultMsg == "")
-    errorMsg = "Lưu thành công";
+    resultMsg = "Lưu thành công";
    new_window.document.write(`<h1> ${voucherCode} - ${percentUsed}% đã sử dụng - ${resultMsg}</h1>`);
    new_window.document.write(`<h3>${discount_info}</h3>`);
    new_window.document.write(`<h3>Info: ${info}</h3>`);
