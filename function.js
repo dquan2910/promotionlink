@@ -107,14 +107,14 @@ function copy() {
             var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
             document.getElementById("thongbao").innerHTML = "";
             var bodyCode = 
-    `fetch('https://dquan2910.github.io/promotionlink/script.js')
-.then(response => response.text())
-.then(scriptContent => {
-var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
-var s = document.createElement('script'); s.type = 'text/javascript';
-s.text = finalScript;
-document.head.appendChild(s);
-});`;
+                `fetch('https://dquan2910.github.io/promotionlink/script.js')
+            .then(response => response.text())
+            .then(scriptContent => {
+            var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
+            var s = document.createElement('script'); s.type = 'text/javascript';
+            s.text = finalScript;
+            document.head.appendChild(s);
+            });`;
             bodyCode = checkCheckedBox(bodyCode);
             document.getElementById("bodycode").value = bodyCode;
         }
@@ -142,12 +142,22 @@ document.head.appendChild(s);
             var posOfPromotionId = linkVoucher.indexOf("&promotionId=");
             var posOfSignature = linkVoucher.indexOf("&signature=");
             if(posOfPromotionId == -1 || posOfSignature == -1)
-            {                
-                if(errList.length != 0) errList = errList + ", ";
-                var posOfLink = i + 1;
-                errList = errList + "Link " + posOfLink;
-                count++;
-                continue;
+            {               
+                const newPos = linkVoucher.indexOf(":");
+                if(newPos == -1 || linkVoucher.slice(0, newPos).length != 16 || linkVoucher.slice(newPos + 1).length != 64)
+                {
+                    if(errList.length != 0) errList = errList + ", ";
+                    var posOfLink = i + 1;
+                    errList = errList + "Link " + posOfLink;
+                    count++;
+                    continue;
+                }
+                else
+                {
+                    if(stringList.length != 0) stringList = stringList + ", ";
+                    var code1 = '"' + linkVoucher + '"';
+                    stringList = stringList + code1;
+                }
             }
             else
             {
@@ -199,7 +209,17 @@ document.head.appendChild(s);
         var posOfPromotionId = promolink.indexOf("&promotionId=");
         var posOfSignature = promolink.indexOf("&signature=");
         if(posOfPromotionId == -1 || posOfSignature == -1){
-            document.getElementById("thongbao").innerHTML = "Đường dẫn có vẻ sai, vui lòng điền lại";
+            const newPos = linkVoucher.indexOf(":");
+            if(newPos == -1 || linkVoucher.slice(0, newPos).length != 16 || linkVoucher.slice(newPos + 1).length != 64)
+            {
+                document.getElementById("thongbao").innerHTML = "Đường dẫn có vẻ sai, vui lòng điền lại";
+            }
+            else
+            {
+                    if(stringList.length != 0) stringList = stringList + ", ";
+                    var code1 = '"' + linkVoucher + '"';
+                    stringList = stringList + code1;
+            }
         }
         else
         {
@@ -207,14 +227,14 @@ document.head.appendChild(s);
             var signature =  (promolink.substring(posOfSignature + 11)).substring(0,64);
             document.getElementById("thongbao").innerHTML = "";
             var bodyCode = 
-    `fetch('https://dquan2910.github.io/promotionlink/script3.js')
-.then(response => response.text())
-.then(scriptContent => {
-var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
-var s = document.createElement('script'); s.type = 'text/javascript';
-s.text = finalScript;
-document.head.appendChild(s);
-});`;
+                `fetch('https://dquan2910.github.io/promotionlink/script3.js')
+            .then(response => response.text())
+            .then(scriptContent => {
+            var finalScript = scriptContent.replace('tempId', '${promotionId}').replace('tempSign', '${signature}');
+            var s = document.createElement('script'); s.type = 'text/javascript';
+            s.text = finalScript;
+            document.head.appendChild(s);
+            });`;
             bodyCode = checkCheckedBox(bodyCode);
             document.getElementById("bodycode").value = bodyCode;
         }
