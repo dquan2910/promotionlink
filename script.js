@@ -69,6 +69,6 @@ async function postData(url = "", data = {}) {    const response = await fetch(u
     }
     else
     {
-        new_window.document.write(`<h3>tempId - ${data.error_msg}</h3>`);
+        new_window.document.write(`<h3>${tempId} - ${data.error_msg}</h3>`);
     }
    });
